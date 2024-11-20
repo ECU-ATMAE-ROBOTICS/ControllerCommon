@@ -5,21 +5,16 @@ build-backend = "setuptools.build_meta"
 [project]
 name = "Controller-Common"
 dynamic = ["version"]
-
 [tool.setuptools.dynamic]
 dependencies = {file = ["requirements.txt"]}
-
 authors = [
   {name = "Alec Lozano", email = "nunya@gmail.com"},
 ]
 maintainers = [
   {name = "ECU ATMAE Robotics"}
 ]
-
 description = "Easily interface with XboxController"
-
 readme = "README.md"
-
 license = {file = "LICENSE"}
 
 [project.urls]
