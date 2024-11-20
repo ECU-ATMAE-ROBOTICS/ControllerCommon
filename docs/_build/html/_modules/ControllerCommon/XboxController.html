@@ -1,0 +1,224 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../../">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ControllerCommon.XboxController &mdash; ControllerCommon 1.0.0 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=e59714d7" />
+
+  
+      <script src="../../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../../_static/documentation_options.js?v=8d563738"></script>
+      <script src="../../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../index.html" class="icon icon-home">
+            ControllerCommon
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../ControllerCommon.html">ControllerCommon package</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">ControllerCommon</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../index.html">Module code</a></li>
+      <li class="breadcrumb-item active">ControllerCommon.XboxController</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <h1>Source code for ControllerCommon.XboxController</h1><div class="highlight"><pre>
+<span></span><span class="kn">import</span> <span class="nn">pygame</span>
+
+<div class="viewcode-block" id="XboxController">
+<a class="viewcode-back" href="../../ControllerCommon.html#ControllerCommon.XboxController.XboxController">[docs]</a>
+<span class="k">class</span> <span class="nc">XboxController</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Class used to interface with an XboxController.&quot;&quot;&quot;</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">controllerNum</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="n">deadZone</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mi">0</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Initialize an Xbox Controller&quot;&quot;&quot;</span>
+        <span class="n">pygame</span><span class="o">.</span><span class="n">init</span><span class="p">()</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">controller</span> <span class="o">=</span> <span class="n">pygame</span><span class="o">.</span><span class="n">joystick</span><span class="o">.</span><span class="n">Joystick</span><span class="p">(</span><span class="n">controllerNum</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">deadZone</span> <span class="o">=</span> <span class="n">deadZone</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">controllerName</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">controller</span><span class="o">.</span><span class="n">get_name</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">numAxis</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">controller</span><span class="o">.</span><span class="n">get_numaxes</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">numButtons</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">controller</span><span class="o">.</span><span class="n">get_numbuttons</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">numDpadButtons</span> <span class="o">=</span> <span class="mi">5</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">total</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">numAxis</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">numButtons</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">numDpadButtons</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">inputIDs</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;D&quot;</span><span class="p">:</span> <span class="p">[</span><span class="nb">id</span> <span class="k">for</span> <span class="nb">id</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">numDpadButtons</span><span class="p">)],</span>
+                         <span class="s2">&quot;A&quot;</span><span class="p">:</span> <span class="p">[</span><span class="nb">id</span> <span class="k">for</span> <span class="nb">id</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">numDpadButtons</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">total</span><span class="o">-</span><span class="bp">self</span><span class="o">.</span><span class="n">numButtons</span><span class="p">)],</span>
+                         <span class="s2">&quot;B&quot;</span><span class="p">:</span> <span class="p">[</span><span class="nb">id</span> <span class="k">for</span> <span class="nb">id</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">total</span><span class="o">-</span><span class="bp">self</span><span class="o">.</span><span class="n">numButtons</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">total</span><span class="p">)]}</span>
+
+<div class="viewcode-block" id="XboxController.getLayout">
+<a class="viewcode-back" href="../../ControllerCommon.html#ControllerCommon.XboxController.XboxController.getLayout">[docs]</a>
+    <span class="k">def</span> <span class="nf">getLayout</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Prints the id&#39;s of the buttons and axis of the XboxController that will be returned in getControllerInput()&quot;&quot;&quot;</span>
+        <span class="k">for</span> <span class="n">buttonType</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">inputIDs</span><span class="o">.</span><span class="n">keys</span><span class="p">():</span>
+            <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">buttonType</span><span class="si">}</span><span class="s2">: </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">inputIDs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">buttonType</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="XboxController.getRawButton">
+<a class="viewcode-back" href="../../ControllerCommon.html#ControllerCommon.XboxController.XboxController.getRawButton">[docs]</a>
+    <span class="k">def</span> <span class="nf">getRawButton</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">buttonID</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Returns the value of a button</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        ButtonID (int): The id of the button</span>
+<span class="sd">    Return:</span>
+<span class="sd">        integer value of the button pressed</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">controller</span><span class="o">.</span><span class="n">get_button</span><span class="p">(</span><span class="n">buttonID</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="XboxController.getRawAxis">
+<a class="viewcode-back" href="../../ControllerCommon.html#ControllerCommon.XboxController.XboxController.getRawAxis">[docs]</a>
+    <span class="k">def</span> <span class="nf">getRawAxis</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">axisID</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">float</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Returns the value of a axis</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        axisID (int): The id of the axis</span>
+<span class="sd">    Return:</span>
+<span class="sd">        float value of the axis</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">controller</span><span class="o">.</span><span class="n">get_axis</span><span class="p">(</span><span class="n">axisID</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="XboxController.getRawdPad">
+<a class="viewcode-back" href="../../ControllerCommon.html#ControllerCommon.XboxController.XboxController.getRawdPad">[docs]</a>
+    <span class="k">def</span> <span class="nf">getRawdPad</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">dPadID</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">tuple</span><span class="p">[</span><span class="nb">int</span><span class="p">,</span> <span class="nb">int</span><span class="p">]:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Returns the value of a axis</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        d-padID (int): The id of the d-pad</span>
+<span class="sd">    Returns:</span>
+<span class="sd">        A tuple that is in the format (0,0) where the x and y are represent which side of the D-Pad </span>
+<span class="sd">    &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">controller</span><span class="o">.</span><span class="n">get_hat</span><span class="p">(</span><span class="n">dPadID</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="XboxController.getControllerInput">
+<a class="viewcode-back" href="../../ControllerCommon.html#ControllerCommon.XboxController.XboxController.getControllerInput">[docs]</a>
+    <span class="k">async</span> <span class="k">def</span> <span class="nf">getControllerInput</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Retrieves the button id and value of any new inputs from the controller. The function only detects input from a button/axis if its value has changed.</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        A String list containing multiple values from multiple buttons/triggers/joysticks from the controller in the format: [Input ID]:[Input Value].</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+        <span class="n">message</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="k">for</span> <span class="n">event</span> <span class="ow">in</span> <span class="n">pygame</span><span class="o">.</span><span class="n">event</span><span class="o">.</span><span class="n">get</span><span class="p">():</span>
+            <span class="k">if</span> <span class="n">event</span><span class="o">.</span><span class="n">type</span> <span class="o">==</span> <span class="n">pygame</span><span class="o">.</span><span class="n">JOYBUTTONUP</span> <span class="ow">or</span> <span class="n">event</span><span class="o">.</span><span class="n">type</span> <span class="o">==</span> <span class="n">pygame</span><span class="o">.</span><span class="n">JOYBUTTONDOWN</span><span class="p">:</span>
+                <span class="n">dictVal</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">inputIDs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;B&quot;</span><span class="p">)</span>
+                <span class="n">value</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">dictVal</span><span class="p">[</span><span class="n">event</span><span class="o">.</span><span class="n">button</span><span class="p">]</span><span class="si">}</span><span class="s2">:</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">controller</span><span class="o">.</span><span class="n">get_button</span><span class="p">(</span><span class="n">event</span><span class="o">.</span><span class="n">button</span><span class="p">)</span><span class="si">}</span><span class="se">\n</span><span class="s2">&quot;</span>
+                <span class="n">message</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">value</span><span class="p">)</span>
+
+            <span class="k">if</span> <span class="n">event</span><span class="o">.</span><span class="n">type</span> <span class="o">==</span> <span class="n">pygame</span><span class="o">.</span><span class="n">JOYAXISMOTION</span><span class="p">:</span>
+                <span class="n">axisValue</span> <span class="o">=</span> <span class="nb">round</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">controller</span><span class="o">.</span><span class="n">get_axis</span><span class="p">(</span><span class="n">event</span><span class="o">.</span><span class="n">axis</span><span class="p">),</span> <span class="mi">1</span><span class="p">)</span>
+                <span class="n">dictVal</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">inputIDs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;A&quot;</span><span class="p">)</span>
+
+                <span class="k">if</span> <span class="n">axisValue</span> <span class="o">&gt;</span> <span class="bp">self</span><span class="o">.</span><span class="n">deadZone</span> <span class="ow">or</span> <span class="n">axisValue</span> <span class="o">&lt;</span> <span class="bp">self</span><span class="o">.</span><span class="n">deadZone</span><span class="o">*-</span><span class="mi">1</span> <span class="ow">or</span> <span class="n">event</span><span class="o">.</span><span class="n">axis</span> <span class="o">==</span> <span class="mi">4</span> <span class="ow">or</span> <span class="n">event</span><span class="o">.</span><span class="n">axis</span> <span class="o">==</span> <span class="mi">5</span><span class="p">:</span>
+                    <span class="n">value</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">dictVal</span><span class="p">[</span><span class="n">event</span><span class="o">.</span><span class="n">axis</span><span class="p">]</span><span class="si">}</span><span class="s2">:</span><span class="si">{</span><span class="n">axisValue</span><span class="si">}</span><span class="se">\n</span><span class="s2">&quot;</span>
+                    <span class="n">message</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">value</span><span class="p">)</span>
+                <span class="k">else</span><span class="p">:</span>
+                    <span class="n">value</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">dictVal</span><span class="p">[</span><span class="n">event</span><span class="o">.</span><span class="n">axis</span><span class="p">]</span><span class="si">}</span><span class="s2">:0</span><span class="se">\n</span><span class="s2">&quot;</span>
+                    <span class="n">message</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">value</span><span class="p">)</span>
+
+            <span class="k">if</span> <span class="n">event</span><span class="o">.</span><span class="n">type</span> <span class="o">==</span> <span class="n">pygame</span><span class="o">.</span><span class="n">JOYHATMOTION</span><span class="p">:</span>
+                <span class="n">dictVal</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">inputIDs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;D&quot;</span><span class="p">)</span>
+                <span class="n">dPadVal</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">controller</span><span class="o">.</span><span class="n">get_hat</span><span class="p">(</span><span class="n">event</span><span class="o">.</span><span class="n">hat</span><span class="p">)</span>
+                <span class="k">if</span> <span class="n">dPadVal</span> <span class="o">==</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">):</span>
+                    <span class="n">value</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">dictVal</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="si">}</span><span class="s2">:</span><span class="si">{</span><span class="mi">0</span><span class="si">}</span><span class="se">\n</span><span class="s2">&quot;</span>
+                    <span class="n">message</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">value</span><span class="p">)</span>
+                <span class="k">elif</span> <span class="n">dPadVal</span> <span class="o">==</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">):</span>
+                    <span class="n">value</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">dictVal</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="si">}</span><span class="s2">:</span><span class="si">{</span><span class="mi">1</span><span class="si">}</span><span class="se">\n</span><span class="s2">&quot;</span>
+                    <span class="n">message</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">value</span><span class="p">)</span>
+
+                <span class="k">elif</span> <span class="n">dPadVal</span> <span class="o">==</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">):</span>
+                    <span class="n">value</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">dictVal</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="si">}</span><span class="s2">:</span><span class="si">{</span><span class="mi">2</span><span class="si">}</span><span class="se">\n</span><span class="s2">&quot;</span>
+                    <span class="n">message</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">value</span><span class="p">)</span>
+
+                <span class="k">elif</span> <span class="n">dPadVal</span> <span class="o">==</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">):</span>
+                    <span class="n">value</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">dictVal</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span><span class="si">}</span><span class="s2">:</span><span class="si">{</span><span class="mi">3</span><span class="si">}</span><span class="se">\n</span><span class="s2">&quot;</span>
+                    <span class="n">message</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">value</span><span class="p">)</span>
+
+                <span class="k">elif</span> <span class="n">dPadVal</span> <span class="o">==</span> <span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">):</span>
+                    <span class="n">value</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">dictVal</span><span class="p">[</span><span class="mi">4</span><span class="p">]</span><span class="si">}</span><span class="s2">:</span><span class="si">{</span><span class="mi">4</span><span class="si">}</span><span class="se">\n</span><span class="s2">&quot;</span>
+                    <span class="n">message</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">value</span><span class="p">)</span>
+
+        <span class="k">return</span> <span class="n">message</span></div>
+</div>
+
+</pre></div>
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2024, Alec Lozano.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
