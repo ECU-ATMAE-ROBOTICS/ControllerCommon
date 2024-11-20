@@ -56,10 +56,10 @@ class XboxController:
         return self.controller.get_hat(dPadID)
 
     async def getControllerInput(self):
-        """Retrieves the button id and value of any new inputs from the controller. The function only detects input from a button/axis if its value has changed.
+        """Asynchronously retrieves the button id and value of any new inputs from the controller. The function only detects input from a button/axis if its value has changed.
 
     Returns:
-        A String list containing multiple values from multiple buttons/triggers/joysticks from the controller in the format: [Input ID]:[Input Value].
+        A String list containing multiple values from multiple buttons/triggers/joysticks from the controller in the string format: "[Input ID]:[Input Value]\\n" for easy serial parsing.
 
     """
         message = []

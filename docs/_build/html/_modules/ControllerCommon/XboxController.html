@@ -143,10 +143,10 @@
 <div class="viewcode-block" id="XboxController.getControllerInput">
 <a class="viewcode-back" href="../../ControllerCommon.html#ControllerCommon.XboxController.XboxController.getControllerInput">[docs]</a>
     <span class="k">async</span> <span class="k">def</span> <span class="nf">getControllerInput</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;Retrieves the button id and value of any new inputs from the controller. The function only detects input from a button/axis if its value has changed.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Asynchronously retrieves the button id and value of any new inputs from the controller. The function only detects input from a button/axis if its value has changed.</span>
 
 <span class="sd">    Returns:</span>
-<span class="sd">        A String list containing multiple values from multiple buttons/triggers/joysticks from the controller in the format: [Input ID]:[Input Value].</span>
+<span class="sd">        A String list containing multiple values from multiple buttons/triggers/joysticks from the controller in the string format: &quot;[Input ID]:[Input Value]\\n&quot; for easy serial parsing.</span>
 
 <span class="sd">    &quot;&quot;&quot;</span>
         <span class="n">message</span> <span class="o">=</span> <span class="p">[]</span>
