@@ -4,8 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "Controller-Common"
-dynamic = ["version"]
-[tool.setuptools.dynamic]
+version = "1.0.0"
 dependencies = {file = ["requirements.txt"]}
 authors = [
   {name = "Alec Lozano", email = "nunya@gmail.com"},
@@ -15,7 +14,8 @@ maintainers = [
 ]
 description = "Easily interface with XboxController"
 readme = "README.md"
-license = {file = "LICENSE"}
+license = { text = "GPL-3.0" }
+classifiers = ["Programming Language :: Python :: 3"]
 
 [project.urls]
 Homepage = "https://example.com"
