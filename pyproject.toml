@@ -14,9 +14,9 @@ maintainers = [
 description = "Easily interface with XboxController"
 readme = "README.md"
 license = {file = "LICENSE"}
-
-[tool.setuptools.dynamic]
-dependencies = {file = ["requirements.txt"]}
+dependencies = [
+  "pygame==2.6.1"
+]
 
 [project.urls]
 homepage = "https://example.com"
