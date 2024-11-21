@@ -101,43 +101,20 @@
             <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">buttonType</span><span class="si">}</span><span class="s2">: </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">inputIDs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">buttonType</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span></div>
 
 
-<div class="viewcode-block" id="XboxController.getRawButton">
-<a class="viewcode-back" href="../../ControllerCommon.html#ControllerCommon.XboxController.XboxController.getRawButton">[docs]</a>
-    <span class="k">def</span> <span class="nf">getRawButton</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">buttonID</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;Returns the value of a button</span>
+    
 
-<span class="sd">    Args:</span>
-<span class="sd">        ButtonID (int): The id of the button</span>
-<span class="sd">    Return:</span>
-<span class="sd">        integer value of the button pressed</span>
-<span class="sd">    &quot;&quot;&quot;</span>
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">controller</span><span class="o">.</span><span class="n">get_button</span><span class="p">(</span><span class="n">buttonID</span><span class="p">)</span></div>
+<div class="viewcode-block" id="XboxController.getInputID">
+<a class="viewcode-back" href="../../ControllerCommon.html#ControllerCommon.XboxController.XboxController.getInputID">[docs]</a>
+    <span class="k">def</span> <span class="nf">getInputID</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="nb">input</span> <span class="p">:</span> <span class="nb">str</span><span class="p">):</span>
+        <span class="k">return</span> <span class="nb">input</span><span class="p">[:</span><span class="nb">input</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="s2">&quot;:&quot;</span><span class="p">)]</span></div>
 
-
-<div class="viewcode-block" id="XboxController.getRawAxis">
-<a class="viewcode-back" href="../../ControllerCommon.html#ControllerCommon.XboxController.XboxController.getRawAxis">[docs]</a>
-    <span class="k">def</span> <span class="nf">getRawAxis</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">axisID</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">float</span><span class="p">:</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;Returns the value of a axis</span>
-
-<span class="sd">    Args:</span>
-<span class="sd">        axisID (int): The id of the axis</span>
-<span class="sd">    Return:</span>
-<span class="sd">        float value of the axis</span>
-<span class="sd">    &quot;&quot;&quot;</span>
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">controller</span><span class="o">.</span><span class="n">get_axis</span><span class="p">(</span><span class="n">axisID</span><span class="p">)</span></div>
+    
+<div class="viewcode-block" id="XboxController.getInputValue">
+<a class="viewcode-back" href="../../ControllerCommon.html#ControllerCommon.XboxController.XboxController.getInputValue">[docs]</a>
+    <span class="k">def</span> <span class="nf">getInputValue</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="nb">input</span> <span class="p">:</span> <span class="nb">str</span><span class="p">):</span>
+        <span class="k">return</span> <span class="nb">input</span><span class="p">[</span><span class="nb">input</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="s2">&quot;:&quot;</span><span class="p">)</span><span class="o">+</span><span class="mi">1</span><span class="p">:]</span></div>
 
 
-<div class="viewcode-block" id="XboxController.getRawdPad">
-<a class="viewcode-back" href="../../ControllerCommon.html#ControllerCommon.XboxController.XboxController.getRawdPad">[docs]</a>
-    <span class="k">def</span> <span class="nf">getRawdPad</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">dPadID</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">tuple</span><span class="p">[</span><span class="nb">int</span><span class="p">,</span> <span class="nb">int</span><span class="p">]:</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;Returns the value of a axis</span>
-
-<span class="sd">    Args:</span>
-<span class="sd">        d-padID (int): The id of the d-pad</span>
-<span class="sd">    Returns:</span>
-<span class="sd">        A tuple that is in the format (0,0) where the x and y are represent which side of the D-Pad </span>
-<span class="sd">    &quot;&quot;&quot;</span>
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">controller</span><span class="o">.</span><span class="n">get_hat</span><span class="p">(</span><span class="n">dPadID</span><span class="p">)</span></div>
 
 
 <div class="viewcode-block" id="XboxController.getControllerInput">
