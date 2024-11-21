@@ -28,9 +28,11 @@ class XboxController:
     
 
     def getInputID(self, input : str):
+        """Get the ID of whatever that was pressed or moved on the controller"""
         return input[:input.find(":")]
     
     def getInputValue(self, input : str):
+        """Get the Value of whatever that was pressed or moved on the controller"""
         return input[input.find(":")+1:]
 
 
