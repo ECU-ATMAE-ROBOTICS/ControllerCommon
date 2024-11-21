@@ -25,35 +25,15 @@ class XboxController:
         for buttonType in self.inputIDs.keys():
             print(f"{buttonType}: {self.inputIDs.get(buttonType)}")
 
-    def getRawButton(self, buttonID: int) -> int:
-        """Returns the value of a button
+    
 
-    Args:
-        ButtonID (int): The id of the button
-    Return:
-        integer value of the button pressed
-    """
-        return self.controller.get_button(buttonID)
+    def getInputID(input : str):
+        return input[:input.find(":")]
+    
+    def getInputValue(input : str):
+        return input[input.find(":")+1:]
 
-    def getRawAxis(self, axisID: int) -> float:
-        """Returns the value of a axis
 
-    Args:
-        axisID (int): The id of the axis
-    Return:
-        float value of the axis
-    """
-        return self.controller.get_axis(axisID)
-
-    def getRawdPad(self, dPadID: int) -> tuple[int, int]:
-        """Returns the value of a axis
-
-    Args:
-        d-padID (int): The id of the d-pad
-    Returns:
-        A tuple that is in the format (0,0) where the x and y are represent which side of the D-Pad 
-    """
-        return self.controller.get_hat(dPadID)
 
     async def getControllerInput(self):
         """Asynchronously retrieves the button id and value of any new inputs from the controller. The function only detects input from a button/axis if its value has changed.
