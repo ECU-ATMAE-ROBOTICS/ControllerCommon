@@ -27,10 +27,10 @@ class XboxController:
 
     
 
-    def getInputID(input : str):
+    def getInputID(self, input : str):
         return input[:input.find(":")]
     
-    def getInputValue(input : str):
+    def getInputValue(self, input : str):
         return input[input.find(":")+1:]
 
 
